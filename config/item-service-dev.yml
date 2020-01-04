@@ -4,18 +4,15 @@ spring:
     cloud:
     config:
       override-none: true
-  rabbitmq:
+      rabbitmq:
     host: 192.168.64.140
     port: 5672
     username: admin
     password: admin
    
-   
-   
-   
 server:
-  port: 8001
-
+  port: 8201  
+  
 eureka:
   client:
     service-url:
@@ -24,7 +21,16 @@ eureka:
     prefer-ip-address: true
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
 
-       
+      
+feign:
+  hystrix:
+    enabled: true
+    
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream
+
 
   
-      
