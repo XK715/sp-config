@@ -18,6 +18,10 @@ eureka:
   client:
     service-url:
       defaultZone: http://eureka1:2001/eureka, http://eureka2:2002/eureka
+  instance:
+    prefer-ip-address: true
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.name}:${server.port}
+
       
 #默认网关配置，除非有特殊需求配置，在此可以不配
 #zuul:
